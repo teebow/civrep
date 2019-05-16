@@ -1,4 +1,5 @@
-import Layout from '../components/MyLayout.js'
+import Layout from '../components/MyLayout'
+import UserList from '../components/UserList'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 
@@ -29,6 +30,7 @@ const PostLink = ({ show }) => (
 const Index = (props) => (
   <Layout>
     <h1>Batman TV Shows</h1>
+    <UserList />
     <ul>
       {props.shows.map(show => (
         <PostLink key={show.id} show={show} />
