@@ -13,8 +13,8 @@ const Header = () => (
         <Link href="/users">
             <a style={linkStyle}>Users</a>
         </Link>
-        <Link href="/login">
-            <a style={linkStyle}>Login</a>
+        <Link href="/login2">
+            <a style={linkStyle}>Login2</a>
         </Link>
     </div>
 )
