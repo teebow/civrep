@@ -11,13 +11,9 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
-    width: '100%',
-    maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
-  inline: {
-    display: 'inline',
-  },
+  
 });
 
 const UserItem = classes => {
@@ -27,14 +23,7 @@ const UserItem = classes => {
           <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
         </ListItemAvatar>
         <ListItemText
-          primary="Thibaud"
-          secondary={
-            <React.Fragment>
-              <Typography component="span" className={classes.inline} color="textPrimary">
-                Weinachter
-              </Typography>
-            </React.Fragment>
-          }
+          primary="QDSD DQLSD"
         />
         <ListItemSecondaryAction>
         <Typography component="span" className={classes.inline} color="colorPrimary">
