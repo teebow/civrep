@@ -1,59 +1,94 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 
-import Card from '@material-ui/core/Card';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import TextField from '@material-ui/core/TextField';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 
 import LoginCard from '../components/LoginCard';
 
+import Logo from '../static/logo.svg';
+
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            // light: will be calculated from palette.primary.main,
+            main: '#009ee2',
+            // dark: will be calculated from palette.primary.main,
+            // contrastText: will be calculated to contrast with palette.primary.main
+            contrastText: '#ffffff',
+        },
+        secondary: {
+            main: '#bc2507',
+            // dark: will be calculated from palette.secondary.main,
+            contrastText: '#ffffff',
+        },
+        // error: will use the default color
+    },
+    overrides: {
+        MuiPaper: { // Name of the component ⚛️ / style sheet
+            rounded: { // Name of the rule
+                borderRadius: 10,
+            },
+        },
+        MuiButton: {
+            contained: { // Name of the rule
+                borderRadius: 16,
+            },
+        },
+        MuiSvgIcon: {
+            colorPrimary: {
+                color: 'rgba(6,44,63,0.55)',
+            }
+        }
+    },
+});
+
 //<img src="/static/login-background.jpg" alt="login image"/>
 const Login = (props) => (
+
     <div className="root">
-        <CssBaseline />
-        <div className="container">
-            <Grid container={true} justify="center" alignItems="center" spacing={24} >
-                <Grid item xs={12}  >
-                    <Typography component="h1" mt={100} variant="h1" color='primary' align="center" gutterBottom>
-                        CivRep
-            </Typography>
-                </Grid >
-                <Grid item xs={8}>
-                    <LoginCard />
+        <MuiThemeProvider theme={theme}>
+            <CssBaseline />
+            <div className="container">
+                <Grid container={true} justify="center" alignItems="center" spacing={24} >
+                    <Grid item xs={8}>
+                        <div className="logo">
+                            <Logo />
+                        </div>
+                    </Grid >
+                    <Grid item xs={8}>
+                        <LoginCard theme={theme} />
+                    </Grid>
+                    <Grid item xs={8}>
+                        <Button color="primary" variant="contained" fullWidth>Connexion</Button>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </div>
+            </div>
+        </MuiThemeProvider>
         <style jsx>{`
-        .inputs {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        };
-        .test {
-        font-size: 72px;
-            background: -webkit-linear-gradient(left top, #d16b7d, #d16d93, #cb73aa, #be7bc0, #ab85d3, #9992e3, #839ff0, #69abf8, #54bcff, #48cbff, #4cdaff, #5fe7fb)
+        .logo {
+            width: 120px;
+            margin: 0 auto;
         }
         .container {
+            background-image: linear-gradient(to right top, #062c3f, #064664, #03628c, #0080b6, #009ee2);
+            background-repeat: no-repeat;
             padding-top: 32px;
             align-items: center;
-            min-height:100%
+            min-height:100%;
+            background-size: 100% 300px;
         }
         .root { 
             height: 100vh;
             min-height:100%;
-            background-image: linear-gradient(to right top, #062c3f, #064664, #03628c, #0080b6, #009ee2);
         };
       `}
         </style>
     </div>
+
 );
 
 
