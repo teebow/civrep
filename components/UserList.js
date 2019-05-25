@@ -8,6 +8,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import { Link } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -18,7 +19,8 @@ const styles = theme => ({
 
 const UserItem = classes => {
     return (
-     <ListItem >
+     <ListItem  >
+       <Link href='/user'>
         <ListItemAvatar>
           <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
         </ListItemAvatar>
@@ -30,6 +32,7 @@ const UserItem = classes => {
                 10
         </Typography>
         </ListItemSecondaryAction>
+        </Link>
       </ListItem>
 )}
 

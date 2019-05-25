@@ -19,7 +19,7 @@ const LoginCard = (props) => (
             <Typography component="h4" variant="h4" color='primary' align="left" gutterBottom>
                         Bienvenue
                     </Typography>
-            <Grid container={true} justify="center" alignItems="center" spacing={8}>
+            <Grid container={true} justify="center" alignItems="center" spacing={1}>
                 <Grid item xs={12}>
                     <TextField label="Email" variant="filled" InputProps={{
                         startAdornment: (

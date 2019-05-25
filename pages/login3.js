@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 
-import LoginCard from '../components/LoginCard';
+import LoginCard from '../components/Login/LoginCard';
 
 import Logo from '../static/logo.svg';
 import theme from "../styles/theme";
@@ -18,7 +18,7 @@ const Login = (props) => (
         <MuiThemeProvider theme={theme}>
             <CssBaseline />
             <div className="container">
-                <Grid container={true} justify="center" alignItems="center" spacing={24} >
+                <Grid container={true} justify="center" alignItems="center" spacing={3} >
                     <Grid item xs={8}>
                         <div className="logo">
                             <Logo />

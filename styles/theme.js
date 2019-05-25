@@ -27,9 +27,20 @@ export default createMuiTheme({
                 borderRadius: 16,
             },
         },
+        MuiTypography:{
+            colorTextSecondary: {
+                color:'#ffffffcf',
+            },
+            colorTextPrimary: {
+                color:'#ffffff',
+            }
+        },
         MuiSvgIcon: {
             colorPrimary: {
                 color: 'rgba(6,44,63,0.55)',
+            },
+            colorAction:{
+                color: '#009ee2',
             }
         }
     },
