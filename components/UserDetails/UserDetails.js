@@ -38,11 +38,6 @@ const UserDetails = () => {
                 <History />
                 <>Item Two</>
             </SwipeableViews>
-            <style jsx>{`
-        .container {
-        };
-      `}
-            </style>
         </div>
     )
 };

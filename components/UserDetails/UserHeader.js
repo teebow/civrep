@@ -16,9 +16,18 @@ import Receipt from '@material-ui/icons/Receipt'
 
 import { InputAdornment, CssBaseline } from '@material-ui/core';
 
+const Container = styled.div`
+    background-image: linear-gradient(to right top, #062c3f, #064664, #03628c, #0080b6, #009ee2);
+    padding: 20px;
+    align-items: center;
+    min-height:100%;
+`;
+
+
+
 //<img src="/static/login-background.jpg" alt="login image"/>
 const UserHeader = (props) => (
-    <div className="container">
+    <Container>
         <CssBaseline />
         <Grid container spacing={2}>
             <Grid item>
@@ -49,16 +58,7 @@ const UserHeader = (props) => (
             </Grid>
 
         </Grid>
-        <style jsx>{`
-        .container {
-            background-image: linear-gradient(to right top, #062c3f, #064664, #03628c, #0080b6, #009ee2);
-            padding: 20px;
-            align-items: center;
-            min-height:100%
-        };
-      `}
-        </style>
-    </div>
+    </Container>
 );
 
 

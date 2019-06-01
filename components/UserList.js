@@ -1,56 +1,87 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import { Link } from '@material-ui/core';
+import { Link, IconButton, Dialog } from '@material-ui/core';
+import DialogContent from '@material-ui/core/DialogContent';
+import AddIcon from '@material-ui/icons/AddCircle'
+import DeleteIcon from '@material-ui/icons/RemoveCircle'
+import UserCard from './UserDetails/UserCard';
 
-const styles = theme => ({
-  root: {
-    backgroundColor: theme.palette.background.paper,
-  },
-  
+import Slide from '@material-ui/core/Slide';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
 });
 
-const UserItem = classes => {
-    return (
-     <ListItem  >
-       <Link href='/user'>
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="QDSD DQLSD"
-        />
-        <ListItemSecondaryAction>
-        <Typography component="span" className={classes.inline} color="colorPrimary">
-                10
-        </Typography>
-        </ListItemSecondaryAction>
-        </Link>
-      </ListItem>
-)}
+function SimpleDialog(props) {
 
-const mockList = () => {
-    return Array(20).fill(<UserItem />);
-}
+  const { onClose, selectedValue, ...other } = props;
 
-const AlignItemsList = (props) => {
-  const { classes } = props;
+  function handleClose() {
+    onClose(selectedValue);
+  }
+
+
   return (
-    <List className={classes.root}>
-        {mockList()}
-    </List>
+    <Dialog TransitionComponent={Transition} keepMounted onClose={handleClose}
+      aria-labelledby="simple-dialog-title" {...other} fullWidth>
+      <DialogContent style={{ padding: 0 }} >
+        <UserCard />
+      </DialogContent>
+    </Dialog>
   );
 }
 
-AlignItemsList.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
-export default withStyles(styles)(AlignItemsList);
+
+
+const UserItem = () => {
+
+  const [open, setOpen] = React.useState(false);
+  //const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+
+  function handleClickOpen() {
+    setOpen(true);
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+    //setSelectedValue(value);
+  };
+
+  return (
+    <>
+      <ListItem >
+        <Link href='/user'>
+          <ListItemText primary="QDSD DQLSD" secondary="10 Tickets" />
+        </Link>
+        <ListItemSecondaryAction>
+          <IconButton edge="end" aria-label="Add" onClick={handleClickOpen}>
+            <AddIcon color="action" />
+          </IconButton>
+          <IconButton edge="end" aria-label="Delete">
+            <DeleteIcon color="secondary" onClick={handleClickOpen} />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+      <SimpleDialog open={open} onClose={handleClose} />
+    </>
+  )
+}
+
+const mockList = () => {
+  return Array(20).fill(<UserItem />);
+}
+
+const AlignItemsList = (props) => {
+  return (
+    <List >
+      {mockList()}
+    </List>
+
+  );
+}
+
+export default AlignItemsList;
